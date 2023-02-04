@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(
           tabs[0].id,
-          {code: 'Array.from(document.getElementsByClassName("section-id")).map(td => td.innerText)'},
+          {code: 'Array.from(document.getElementById("term-20231").getElementsByClassName("section-id")).map(td => td.innerText)'},
           function(result) {
             let paragraphList = document.getElementById("paragraph-list");
             paragraphList.innerHTML = '';
