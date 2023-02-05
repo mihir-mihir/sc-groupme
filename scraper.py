@@ -1,4 +1,10 @@
 import requests
+import json
+
+with open('data.json', 'r') as file:
+    # Load the JSON data from the file
+    data = json.load(file)
+
 
 if creation_check == True:
 
@@ -15,16 +21,10 @@ if creation_check == True:
     response = requests.post(join_group_url)
 
     # Check if the request was successful
-    if response.status_code == 200:
-        print("Successfully joined group")
-    else:
-        print("Failed to join group. Error:", response.text)
-
-
-    
-
-
-
+    # if response.status_code == 200:
+    #     print("Successfully joined group")
+    # else:
+    #     print("Failed to join group. Error:", response.text)
 
 
 
@@ -61,14 +61,15 @@ if creation_check == False:
     response = requests.post(url, headers=headers, json=payload)
 
     # Check if the group was created successfully
-    if response.status_code == 201:
-        print("Group created successfully")
-        print(response.json())
-    else:
-        print("Failed to create group")
-        print(response.json())
+    # if response.status_code == 201:
+    #     print("Group created successfully")
+    #     print(response.json())
+    # else:
+    #     print("Failed to create group")
+    #     print(response.json())
 
 
 
 
 def creation_check():
+    
