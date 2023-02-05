@@ -1,7 +1,7 @@
 import requests
 
 # Your GroupMe API access token
-access_token = "your_access_token_here"
+access_token = "AOz36zWxnjEibQItvOemMJUWerA3aAFgMFlXkDQm"
 
 # The name of the group
 group_name = "My Group"
