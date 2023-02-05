@@ -6,6 +6,7 @@ with open('data.json', 'r') as file:
     data = json.load(file)
 
 
+
 if creation_check == True:
 
     # GroupMe API access token
@@ -72,4 +73,6 @@ if creation_check == False:
 
 
 def creation_check():
-    
+    #if sectionID exists, group already created, return true
+
+    #else, return false
