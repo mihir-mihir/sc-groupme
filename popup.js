@@ -11,10 +11,20 @@ document.addEventListener("DOMContentLoaded", function() {
               let listItem = document.createElement("li");
               listItem.innerText = paragraph;
               paragraphList.appendChild(listItem);
+
             });
+            let data = JSON.stringify(result[0]);
+            let blob = new Blob([data], { type: 'application/json' });
+            let url = URL.createObjectURL(blob);
+            let link = document.createElement("a");
+            link.download = "data.json";
+            link.href = url;
+            link.click();
           });
       });
     });
+
   });
   
   
+
