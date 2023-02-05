@@ -14,34 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             });
 
-            const axios = require('axios');
-
-            async function createGroupChat(token, name) {
-              const response = await axios.post('https://api.groupme.com/v3/groups', {
-                name: name,
-                share: false
-              }, {
-                headers: {
-                  'X-Access-Token': token
-                }
-              });
-
-              return response.data;
-            }
-
-            const token = 'AOz36zWxnjEibQItvOemMJUWerA3aAFgMFlXkDQm';
-            const name = 'Buad 303';
-
-            createGroupChat(token, name)
-              .then(group => {
-                console.log(`Created group chat with ID: ${group.response.id}`);
-              })
-              .catch(error => {
-                console.error(error);
-              });
-
-
-            /*if(true) {
+            if(true) {
               const group = {
                 name: 'My Group',
                 description: 'This is my GroupMe group',
@@ -66,6 +39,34 @@ document.addEventListener("DOMContentLoaded", function() {
           
           }
           else{
+
+            app.get("/oauth", function(req, res) {
+              res.redirect("https://api.groupme.com/oauth/authorize?client_id=" + clientId + "&redirect_uri=" + redirectUri);
+            });
+
+            app.get("/callback", function(req, res) {
+              var code = req.query.code;
+            
+              // Use the authorization code to make a POST request to GroupMe's token endpoint
+              request.post({
+                url: "https://api.groupme.com/oauth/access_token",
+                form: {
+                  client_id: clientId,
+                  client_secret: clientSecret,
+                  code: code
+                }
+              }, function(error, response, body) {
+                var accessToken = JSON.parse(body).access_token;
+            
+                // Store the access token for later use
+                
+            
+                // Redirect the user to your app's main page
+                res.redirect("/");
+              });
+            });
+            
+            
             const requestBody = {
               members: [
                 {
@@ -91,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
             
           
-          }*/
+          }
           
             
           });
