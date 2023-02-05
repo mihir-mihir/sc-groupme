@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'X-Access-Token': 'AOz36zWxnjEibQItvOemMJUWerA3aAFgMFlXkDQm'
+                'X-Access-Token': '8Ogob7rGvfTWhaZdO5gAZcOWC3CEnZOkIYMH47pM'
               },
               body: JSON.stringify(group)
             })
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             clientId = "hYV3KgET0h7hjbg8b7lRtyegiYtVnHxpuiaAsavU2yscbQGp";
             redirectUri = "https://oauth.groupme.com/oauth/login_dialog?client_id=hYV3KgET0h7hjbg8b7lRtyegiYtVnHxpuiaAsavU2yscbQGp";
-            
+
             app.get("/oauth", function(req, res) {
               res.redirect("https://api.groupme.com/oauth/authorize?client_id=" + clientId + "&redirect_uri=" + redirectUri);
             });
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
               // Use the authorization code to make a POST request to GroupMe's token endpoint
               request.post({
-                url: "https://api.groupme.com/oauth/access_token",
+                url: "https://api.groupme.com/oauth/8Ogob7rGvfTWhaZdO5gAZcOWC3CEnZOkIYMH47pM",
                 form: {
                   client_id: clientId,
                   code: code,
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'X-Access-Token': 'AOz36zWxnjEibQItvOemMJUWerA3aAFgMFlXkDQm'
+                'X-Access-Token': '8Ogob7rGvfTWhaZdO5gAZcOWC3CEnZOkIYMH47pM'
               },
               body: JSON.stringify(requestBody)
             })
