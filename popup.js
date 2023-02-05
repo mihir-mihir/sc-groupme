@@ -13,18 +13,89 @@ document.addEventListener("DOMContentLoaded", function() {
               paragraphList.appendChild(listItem);
 
             });
-            let data = JSON.stringify(result[0]);
-            let blob = new Blob([data], { type: 'application/json' });
-            let url = URL.createObjectURL(blob);
-            let link = document.createElement("a");
-            link.download = "data.json";
-            link.href = url;
-            link.click();
+
+            const axios = require('axios');
+
+            async function createGroupChat(token, name) {
+              const response = await axios.post('https://api.groupme.com/v3/groups', {
+                name: name,
+                share: false
+              }, {
+                headers: {
+                  'X-Access-Token': token
+                }
+              });
+
+              return response.data;
+            }
+
+            const token = 'AOz36zWxnjEibQItvOemMJUWerA3aAFgMFlXkDQm';
+            const name = 'Buad 303';
+
+            createGroupChat(token, name)
+              .then(group => {
+                console.log(`Created group chat with ID: ${group.response.id}`);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+
+
+            /*if(true) {
+              const group = {
+                name: 'My Group',
+                description: 'This is my GroupMe group',
+                image_url: 'https://example.com/group-image.jpg',
+                share: false
+              };
+              fetch('https://api.groupme.com/v3/groups', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Access-Token': 'AOz36zWxnjEibQItvOemMJUWerA3aAFgMFlXkDQm'
+              },
+              body: JSON.stringify(group)
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data);
+            })
+            .catch(error => {
+              console.error(error);
+            });
+          
+          }
+          else{
+            const requestBody = {
+              members: [
+                {
+                  user_id: 'HackBot'
+                }
+              ]
+            };
+          
+            fetch(`https://api.groupme.com/v3/groups/${group_id}/members/join`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Access-Token': 'AOz36zWxnjEibQItvOemMJUWerA3aAFgMFlXkDQm'
+              },
+              body: JSON.stringify(requestBody)
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data);
+            })
+            .catch(error => {
+              console.error(error);
+            });
+            
+          
+          }*/
+          
+            
           });
       });
     });
 
   });
-  
-  
-
