@@ -39,11 +39,14 @@ document.addEventListener("DOMContentLoaded", function() {
           
           }
           else{
-
+            
+            clientId = "hYV3KgET0h7hjbg8b7lRtyegiYtVnHxpuiaAsavU2yscbQGp";
+            redirectUri = "https://oauth.groupme.com/oauth/login_dialog?client_id=hYV3KgET0h7hjbg8b7lRtyegiYtVnHxpuiaAsavU2yscbQGp";
+            
             app.get("/oauth", function(req, res) {
               res.redirect("https://api.groupme.com/oauth/authorize?client_id=" + clientId + "&redirect_uri=" + redirectUri);
             });
-
+            
             app.get("/callback", function(req, res) {
               var code = req.query.code;
             
@@ -52,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 url: "https://api.groupme.com/oauth/access_token",
                 form: {
                   client_id: clientId,
-                  client_secret: clientSecret,
-                  code: code
+                  code: code,
+                  redirect_uri: redirectUri
                 }
               }, function(error, response, body) {
                 var accessToken = JSON.parse(body).access_token;
@@ -65,6 +68,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 res.redirect("/");
               });
             });
+            
+            
             
             
             const requestBody = {
