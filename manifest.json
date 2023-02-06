@@ -1,14 +1,15 @@
 {
   "manifest_version": 2,
-  "name": "Read Page Data",
-  "description": "A simple extension to read the text content of a page.",
+  "name": "USC GroupMe Connect",
+  "description": "This extension helps connect you to other USC students in your classes using GroupMe.",
   "version": "1.0",
+  "icons":{
+    "16": "16by16usc.png"
+  },
   "browser_action": {
     "default_popup": "index.html"
   },
   "permissions": [
-    "activeTab",
-    "windows",
-    "webNavigation"
+    "activeTab"
   ]
 }
